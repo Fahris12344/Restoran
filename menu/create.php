@@ -1,12 +1,16 @@
 <?php
 include '../koneksi.php';
 
+$menu = mysqli_query($conn, "SELECT * FROM menu");
+$koki = mysqli_query($conn, "SELECT * FROM koki");
+
 if (isset($_POST['submit'])) {
-    $kapasitas_id = $_POST['kapasitas_id'];
+    $makanan = $_POST['makanan'];
+    $koki_id = $_POST['koki_id'];
 
     // SQL untuk menambahkan data
-    $sql = "INSERT INTO kapasitas_meja (kapasitas_id)
-VALUES ( '$kapasitas_id')";
+    $sql = "INSERT INTO menu (makanan, koki_id)
+VALUES ('$makanan', '$koki_id')";
 
     if ($conn->query($sql) === TRUE) {
         echo "Data baru berhasil ditambahkan<br>";
@@ -30,13 +34,25 @@ $conn->close();
     <div class="container">
         <form action="create.php" method="post">
             <div class="mb-3">
-                <label for="kapasitas" class="form-label">kapasitas</label>
-                <input type="text" class="form-control" id="kapasitas_id" name="kapasitas_id" required>
+                <label for="makanan" class="form-label">Tambah Makanan</label>
+                <input class="form-control" type="text" name="makanan" id="makanan" required>
+                </div>
+            <div class="mb-3">
+                <label for="koki" class="form-label">Koki</label>
+                <select name="koki_id" id="koki" class="form-control">
+                    <?php
+
+                    foreach ($koki as $row) :
+                    ?>
+                        <option value="<?= $row['id'] ?>"><?= $row['nama'] ?></option>
+                    <?php
+                    endforeach;
+                    ?>
+                </select>
             </div>
             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 
 </body>
-
 </html>

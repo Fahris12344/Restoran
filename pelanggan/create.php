@@ -3,18 +3,18 @@ include '../koneksi.php';
 
 $kapasitas_meja = mysqli_query($conn, "SELECT * FROM kapasitas_meja");
 $lokasi = mysqli_query($conn, "SELECT * FROM lokasi");
-
+    
 if (isset($_POST['submit'])) {
     $nama = $_POST['nama'];
     $no_telpn = $_POST['no_telpn'];
     $alamat = $_POST['alamat'];
-    $kapasitas = $_POST['kapasitas'];
-    $lokasi = $_POST['lokasi'];
+    $kapasitas_id = $_POST['kapasitas_id'];
+    $lokasi_id = $_POST['lokasi_id'];
     $tanggal_pesan = $_POST['tanggal_pesan'];
 
     // SQL untuk menambahkan data
-    $sql = "INSERT INTO daftar_pelanggan (nama, no_telpn, alamat, kapasitas, lokasi, tanggal_pesan)
-VALUES ('$nama', '$no_telpn', '$alamat', '$kapasitas', '$lokasi', '$tanggal_pesan')";
+    $sql = "INSERT INTO daftar_pelanggan (nama, no_telpn, alamat, kapasitas_id, lokasi_id, tanggal_pesan)
+VALUES ('$nama', '$no_telpn', '$alamat', '$kapasitas_id', '$lokasi_id', '$tanggal_pesan')";
 
     if ($conn->query($sql) === TRUE) {
         echo "Data baru berhasil ditambahkan<br>";
@@ -52,7 +52,7 @@ $conn->close();
             </div>
             <div class="mb-3">
                 <label for="kapasitas" class="form-label">kapasitas</label>
-                <select name="kapasitas" id="kapasitas" class="form-control">
+                <select name="kapasitas_id" id="kapasitas_id" class="form-control">
                     <?php
 
                     foreach ($kapasitas_meja as $row) :
@@ -65,7 +65,7 @@ $conn->close();
             </div>
             <div class="mb-3">
                 <label for="lokasi" class="form-label">Lokasi</label>
-                <select name="lokasi" id="lokasi" class="form-control">
+                <select name="lokasi_id" id="lokasi_id" class="form-control">
                     <?php
 
                     foreach ($lokasi as $row) :

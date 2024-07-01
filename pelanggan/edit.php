@@ -114,5 +114,4 @@ if (mysqli_query($conn, $update_query)) {
         </form>
     </div>
 </body>
-
 </html>
