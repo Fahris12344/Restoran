@@ -8,6 +8,12 @@ $result = mysqli_query($conn, $sql);
 $i =1;
 ?>
 
+<style>
+    body{
+        background-color: darkgrey;
+    }
+</style>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

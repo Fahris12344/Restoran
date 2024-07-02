@@ -9,6 +9,12 @@ $result = mysqli_query($conn, "SELECT menu.*, koki.nama AS koki_name FROM menu J
 $i = 1;
 ?>
 
+<style>
+    body{
+        background-color: darkgrey;
+    }
+</style>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

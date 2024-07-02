@@ -6,7 +6,7 @@ include 'navbar.php';
         font-family: serif;
     }
     body {
-        background: url();
+        background-color: darkgray;
     }
 </style>
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
