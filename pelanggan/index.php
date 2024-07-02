@@ -23,15 +23,22 @@ $i = 1;
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
 </head>
 <body>
+
+<style>
+    body{
+        background-color:silver;
+    }
+</style>
+
     <div class="container">
         <h1 class="text-center">Data Pesanan</h1>
         <a href="create.php"><button class="btn btn-primary mb-3">Tambah</button></a>
         <table class="table table-bordered border-dark" id="datatable">
-            <thead class="table-primary">
+            <thead class="table-primary border-dark">
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Nama</th>
-                    <th scope="col">no_telpn</th>
+                    <th scope="col">No_Telpn</th>
                     <th scope="col">Alamat</th>
                     <th scope="col">Kapasitas</th>
                     <th scope="col">Lokasi</th>

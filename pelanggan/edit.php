@@ -30,8 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nama =  $_POST['nama'];
     $alamat =  $_POST['alamat'];
     $no_telpn =  $_POST['no_telpn'];
-    $kapasitas =  $_POST['kapasitas'];
-    $lokasi =  $_POST['lokasi'];
+    $kapasitas_id =  $_POST['kapasitas_id'];
+    $lokasi_id =  $_POST['lokasi_id'];
     $tanggal_pesan =  $_POST['tanggal_pesan'];
 
     // Update query
@@ -39,8 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      nama='$nama', 
      alamat='$alamat', 
      no_telpn='$no_telpn', 
-     kapasitas='$kapasitas', 
-     lokasi='$lokasi', 
+     kapasitas_id='$kapasitas_id', 
+     lokasi_id='$lokasi_id', 
      tanggal_pesan='$tanggal_pesan' 
      WHERE id='$id'";
 
@@ -82,7 +82,7 @@ if (mysqli_query($conn, $update_query)) {
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Kapasitas</label>
-                <select name="kapasitas" id="kapasitas" class="form-control" value="<?= $data['kapasitas'] ?>">
+                <select name="kapasitas_id" id="kapasitas_id" class="form-control" value="<?= $data['kapasitas'] ?>">
                     <?php
 
                     foreach ($kapasitas_meja as $row) :
@@ -95,7 +95,7 @@ if (mysqli_query($conn, $update_query)) {
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Lokasi</label>
-                <select name="lokasi" id="lokasi" class="form-control" value="<?= $data['lokasi'] ?>">
+                <select name="lokasi_id" id="lokasi_id" class="form-control" value="<?= $data['lokasi'] ?>">
                     <?php
 
                     foreach ($lokasi as $row) :

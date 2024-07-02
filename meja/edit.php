@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
     // Validasi id untuk menghindari SQL Injection
     $id = mysqli_real_escape_string($conn, $id);
 
-    // Ambil data pelanggan dari database berdasarkan id
+    // Ambil data daftar_pelanggan dari database berdasarkan id
     $query = "SELECT * FROM kapasitas_meja WHERE id='$id'";
     $result = mysqli_query($conn, $query);
 

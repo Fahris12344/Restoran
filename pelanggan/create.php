@@ -43,7 +43,7 @@ $conn->close();
                 <input type="text" class="form-control" id="nama" name="nama" required>
             </div>
             <div class="mb-3">
-                <label for="no_telp" class="form-label">no_telp</label>
+                <label for="no_telp" class="form-label">No_Telp</label>
                 <input type="text" class="form-control" id="no_telpn" name="no_telpn" required>
             </div>
             <div class="mb-3">
@@ -51,7 +51,7 @@ $conn->close();
                 <input type="text" class="form-control" id="alamat" name="alamat" required>
             </div>
             <div class="mb-3">
-                <label for="kapasitas" class="form-label">kapasitas</label>
+                <label for="kapasitas_id" class="form-label">Kapasitas</label>
                 <select name="kapasitas_id" id="kapasitas_id" class="form-control">
                     <?php
 

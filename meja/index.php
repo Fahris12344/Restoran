@@ -20,7 +20,7 @@ $i =1;
         <h1 class="text-center">Data Meja Pesanan</h1>
         <a href="create.php"><button class="btn btn-primary mb-3">Tambah</button></a>
         <table class="table table-bordered border-dark">
-            <thead class="table-primary">
+            <thead class="table-primary border-dark">
                 <tr>
                     <th scope="col">No</th>
                     <th scope="col">Kapasitas</th>

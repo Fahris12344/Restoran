@@ -5,7 +5,7 @@ if (isset($_POST['submit'])) {
     $kapasitas_id = $_POST['kapasitas_id'];
 
     // SQL untuk menambahkan data
-    $sql = "INSERT INTO kapasitas_meja (kapasitas_id)
+    $sql = "INSERT INTO kapasitas_meja (kapasitas)
 VALUES ( '$kapasitas_id')";
 
     if ($conn->query($sql) === TRUE) {
