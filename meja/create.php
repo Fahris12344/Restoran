@@ -1,16 +1,18 @@
 <?php
 include '../koneksi.php';
-
+include '../layout/navbar.php';
 if (isset($_POST['submit'])) {
     $kapasitas_id = $_POST['kapasitas_id'];
 
     // SQL untuk menambahkan data
     $sql = "INSERT INTO kapasitas_meja (kapasitas)
-VALUES ( '$kapasitas_id')";
+VALUES ( '$kapasitas_id')"; 
 
     if ($conn->query($sql) === TRUE) {
-        echo "Data baru berhasil ditambahkan<br>";
-        header('Location: index.php');
+        echo "<script>
+                alert('Data Berhasil Di tambahkan');
+                window.location.href = 'index.php';
+              </script>";
     } else {
         echo "Kesalahan menambahkan data: " . $conn->error . "<br>";
     }
@@ -27,16 +29,22 @@ $conn->close();
 </head>
 
 <body>
+<style>
+    body{
+        background-color: darkgray;
+    }
+</style>
     <div class="container">
+        <h1 class="text-center">Tambah Kapasitas</h1>
         <form action="create.php" method="post">
             <div class="mb-3">
-                <label for="kapasitas" class="form-label">kapasitas</label>
+                <label for="kapasitas" class="form-label">Kapasitas</label>
                 <input type="text" class="form-control" id="kapasitas_id" name="kapasitas_id" required>
             </div>
             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>

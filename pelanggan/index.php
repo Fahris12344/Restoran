@@ -10,10 +10,8 @@ JOIN kapasitas_meja ON daftar_pelanggan.kapasitas_id = kapasitas_meja.id");
 
 $i = 1;
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Data Pelanggan</title>
@@ -23,13 +21,11 @@ $i = 1;
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
 </head>
 <body>
-
 <style>
     body{
-        background-color:silver;
+        background-color: darkgray;
     }
 </style>
-
     <div class="container">
         <h1 class="text-center">Data Pesanan</h1>
         <a href="create.php"><button class="btn btn-primary mb-3">Tambah</button></a>
@@ -40,7 +36,7 @@ $i = 1;
                     <th scope="col">Nama</th>
                     <th scope="col">No_Telpn</th>
                     <th scope="col">Alamat</th>
-                    <th scope="col">Kapasitas</th>
+                    <th scope="col">Jumlah</th>
                     <th scope="col">Lokasi</th>
                     <th scope="col">Tanggal Pesan</th>
                     <th scope="col">Aksi</th>
@@ -68,7 +64,6 @@ $i = 1;
             </tbody>
         </table>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>

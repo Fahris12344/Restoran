@@ -1,9 +1,9 @@
 <?php
 include '../koneksi.php';
+include '../layout/navbar.php';
 
 $kapasitas_meja = mysqli_query($conn, "SELECT * FROM kapasitas_meja");
 $lokasi = mysqli_query($conn, "SELECT * FROM lokasi");
-
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -26,7 +26,7 @@ if (isset($_GET['id'])) {
 
 // Proses update data jika form disubmit
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id =$_POST['id'];
+    $id = $_POST['id'];
     $nama =  $_POST['nama'];
     $alamat =  $_POST['alamat'];
     $no_telpn =  $_POST['no_telpn'];
@@ -44,13 +44,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      tanggal_pesan='$tanggal_pesan' 
      WHERE id='$id'";
 
-if (mysqli_query($conn, $update_query)) {
-    echo "<div class='success'>Data berhasil diupdate.</div>";
-    header("Location:index.php");
-} else {
-    echo "<div class='error'>Error: " . mysqli_error($conn) . "</div>";
-}
-
+    if (mysqli_query($conn, $update_query)) {
+        // Menampilkan alert dengan script JavaScript
+        echo "<script>
+                alert('Data berhasil diupdate');
+                window.location.href = 'index.php';
+              </script>";
+        exit();
+    } else {
+        echo "<div class='error'>Error: " . mysqli_error($conn) . "</div>";
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -59,12 +62,18 @@ if (mysqli_query($conn, $update_query)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Update Data Pelanggan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
 <body>
+    <style>
+        body {
+            background-color: darkgray;
+        }
+    </style>
     <div class="container">
+        <h2>Update Data Pelanggan</h2>
         <form action="" method="post">
             <div class="mb-3">
                 <input type="hidden" name="id" value="<?= $data['id'] ?>">
@@ -73,7 +82,7 @@ if (mysqli_query($conn, $update_query)) {
                 <input type="text" class="form-control" name="nama" value="<?= $data['nama'] ?>">
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">No_telp</label>
+                <label for="exampleInputPassword1" class="form-label">No Telp</label>
                 <input type="text" class="form-control" name="no_telpn" value="<?= $data['no_telpn'] ?>">
             </div>
             <div class="mb-3">
@@ -82,28 +91,24 @@ if (mysqli_query($conn, $update_query)) {
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Kapasitas</label>
-                <select name="kapasitas_id" id="kapasitas_id" class="form-control" value="<?= $data['kapasitas'] ?>">
+                <select name="kapasitas_id" id="kapasitas_id" class="form-control">
                     <?php
-
                     foreach ($kapasitas_meja as $row) :
+                        $selected = $row['id'] == $data['kapasitas_id'] ? 'selected' : '';
                     ?>
-                        <option value="<?= $row['id'] ?>"><?= $row['kapasitas'] ?></option>
-                    <?php
-                    endforeach;
-                    ?>
+                        <option <?= $selected ?> value="<?= $row['id'] ?>"><?= $row['kapasitas'] ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Lokasi</label>
-                <select name="lokasi_id" id="lokasi_id" class="form-control" value="<?= $data['lokasi'] ?>">
+                <select name="lokasi_id" id="lokasi_id" class="form-control">
                     <?php
-
                     foreach ($lokasi as $row) :
+                        $selected = $row['id'] == $data['lokasi_id'] ? 'selected' : '';
                     ?>
-                        <option value="<?= $row['id'] ?>"><?= $row['lokasi'] ?></option>
-                    <?php
-                    endforeach;
-                    ?>
+                        <option <?= $selected ?> value="<?= $row['id'] ?>"><?= $row['lokasi'] ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
             <div class="mb-3">
@@ -113,5 +118,7 @@ if (mysqli_query($conn, $update_query)) {
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
+
 </html>

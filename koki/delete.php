@@ -4,8 +4,8 @@ include '../koneksi.php';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    // Cek apakah data sedang digunakan sebelum menghapus
-    $stmt_check_usage = $conn->prepare("SELECT COUNT(*) FROM daftar_pelanggan WHERE lokasi_id=?");
+    // Cek apakah data sedang digunakan di tabel lain
+    $stmt_check_usage = $conn->prepare("SELECT COUNT(*) FROM menu WHERE koki_id=?");
     $stmt_check_usage->bind_param("i", $id);
     $stmt_check_usage->execute();
     $stmt_check_usage->bind_result($usage_count);
@@ -17,7 +17,7 @@ if (isset($_GET['id'])) {
         echo "<script>alert('Data sedang digunakan dan tidak dapat dihapus');</script>";
     } else {
         // Jika tidak ada penggunaan data, lanjutkan dengan operasi delete
-        $stmt = $conn->prepare("DELETE FROM lokasi WHERE id=?");
+        $stmt = $conn->prepare("DELETE FROM koki WHERE id=?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
 

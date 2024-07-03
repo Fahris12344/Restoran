@@ -25,13 +25,14 @@ require '../koneksi.php';
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="bi bi-list"></i>
             </a>
-            <ul class="dropdown-menu dropdown-menu-end mt-2">
+            <ul class="dropdown-menu dropdown-menu-end mt-2 bg-secondary">
               <li class="nav-item">
                 <a class="dropdown-item" href="../pelanggan/index.php">Order</a>
               </li>
               <li><a class="dropdown-item" href="../lokasi/index.php">Lokasi</a></li>
               <li><a class="dropdown-item" href="../meja/index.php">Kapasitas</a></li>
               <li><a class="dropdown-item" href="../information/index.php">Information</a></li>
+              <li><a class="dropdown-item" href="../koki/index.php">Koki</a></li>
             </ul>
           </li>
         </ul>

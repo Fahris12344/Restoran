@@ -1,7 +1,7 @@
 <?php
 include '../koneksi.php';
 include '../layout/navbar.php';
-$kapasitas_meja = mysqli_query($conn, "SELECT * FROM kapasitas_meja");
+$lokasi = mysqli_query($conn, "SELECT * FROM koki");
 
 
 if (isset($_GET['id'])) {
@@ -11,7 +11,7 @@ if (isset($_GET['id'])) {
     $id = mysqli_real_escape_string($conn, $id);
 
     // Ambil data daftar_pelanggan dari database berdasarkan id
-    $query = "SELECT * FROM kapasitas_meja WHERE id='$id'";
+    $query = "SELECT * FROM koki WHERE id='$id'";
     $result = mysqli_query($conn, $query);
 
     // Periksa apakah query berhasil
@@ -26,16 +26,16 @@ if (isset($_GET['id'])) {
 // Proses update data jika form disubmit
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
-    $kapasitas =  $_POST['kapasitas'];
+    $koki =  $_POST['nama'];
 
     // Update query
-    $update_query = "UPDATE kapasitas_meja SET  
-     kapasitas='$kapasitas' 
+    $update_query = "UPDATE koki SET  
+     nama='$koki' 
      WHERE id='$id'";
 
     if (mysqli_query($conn, $update_query)) {
         echo "<script>
-        alert('Data Berhasil Di tambahkan');
+        alert('Data Berhasil Di Update');
         window.location.href = 'index.php';
       </script>";
     } else {
@@ -59,13 +59,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     </style>
     <div class="container">
-        <h1 class="text-center">Edit Data</h1>
+        <h1 class="text-center">Tambah Koki</h1>
         <form action="" method="post">
             <div class="mb-3">
                 <input type="hidden" name="id" value="<?= $data['id'] ?>">
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Kapasitas</label>
-                    <input type="number" class="form-control" name="kapasitas" value="<?= $data['kapasitas'] ?>">
+                    <label for="nama" class="form-label">lokasi</label>
+                    <input type="text" class="form-control" name="nama" value="<?= $data['nama'] ?>">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
         </form>

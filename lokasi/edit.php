@@ -1,7 +1,7 @@
 <?php
 include '../koneksi.php';
 include '../layout/navbar.php';
-$kapasitas_meja = mysqli_query($conn, "SELECT * FROM kapasitas_meja");
+$lokasi = mysqli_query($conn, "SELECT * FROM lokasi");
 
 
 if (isset($_GET['id'])) {
@@ -11,7 +11,7 @@ if (isset($_GET['id'])) {
     $id = mysqli_real_escape_string($conn, $id);
 
     // Ambil data daftar_pelanggan dari database berdasarkan id
-    $query = "SELECT * FROM kapasitas_meja WHERE id='$id'";
+    $query = "SELECT * FROM lokasi WHERE id='$id'";
     $result = mysqli_query($conn, $query);
 
     // Periksa apakah query berhasil
@@ -26,18 +26,19 @@ if (isset($_GET['id'])) {
 // Proses update data jika form disubmit
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
-    $kapasitas =  $_POST['kapasitas'];
+    $lokasi =  $_POST['lokasi'];
 
     // Update query
-    $update_query = "UPDATE kapasitas_meja SET  
-     kapasitas='$kapasitas' 
+    $update_query = "UPDATE lokasi SET  
+     lokasi='$lokasi' 
      WHERE id='$id'";
 
     if (mysqli_query($conn, $update_query)) {
         echo "<script>
-        alert('Data Berhasil Di tambahkan');
+        alert('Data Berhasil Di update');
         window.location.href = 'index.php';
       </script>";
+       
     } else {
         echo "<div class='error'>Error: " . mysqli_error($conn) . "</div>";
     }
@@ -64,8 +65,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="mb-3">
                 <input type="hidden" name="id" value="<?= $data['id'] ?>">
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Kapasitas</label>
-                    <input type="number" class="form-control" name="kapasitas" value="<?= $data['kapasitas'] ?>">
+                    <label for="exampleInputPassword1" class="form-label">lokasi</label>
+                    <input type="text" class="form-control" name="lokasi" value="<?= $data['lokasi'] ?>">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
         </form>

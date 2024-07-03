@@ -2,18 +2,17 @@
 include '../koneksi.php';
 include '../layout/navbar.php';
 if (isset($_POST['submit'])) {
-    $lokasi = $_POST['lokasi'];
+    $koki = $_POST['nama'];
 
     // SQL untuk menambahkan data
-    $sql = "INSERT INTO lokasi (lokasi)
-VALUES ('$lokasi')";
+    $sql = "INSERT INTO koki (nama)
+VALUES ('$koki')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Data baru berhasil ditambahkan<br>";
         echo "<script>
-        alert('Data Berhasil Di tambahkan');
-        window.location.href = 'index.php';
-      </script>";
+                alert('Data Berhasil Di tambahkan');
+                window.location.href = 'index.php';
+              </script>";
     } else {
         echo "Kesalahan menambahkan data: " . $conn->error . "<br>";
     }
@@ -35,11 +34,11 @@ $conn->close();
     }
 </style>
     <div class="container">
-        <h1 class="text-center">Tambah Lokasi</h1>
+        <h1 class="text-center">Tambah Koki</h1>
         <form action="create.php" method="post">
             <div class="mb-3">
-                <label for="lokasi" class="form-label">Lokasi</label>
-                <input type="text" class="form-control" id="lokasi" name="lokasi" required>
+                <label for="nama" class="form-label">Nama</label>
+                <input type="text" class="form-control" id="nama" name="nama" required>
             </div>
             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
         </form>

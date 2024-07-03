@@ -41,7 +41,7 @@ $i =1;
                     <td><?php echo $i ?></td>
                     <td><?php echo $row['kapasitas']; ?></td>
                     <td>
-                        <a href="edit.php?id=<?php echo $row['id']; ?>"><button class="btn btn-primary"><i class="bi bi-pencil-square"></i></button></a>
+                    <a href="edit.php?id=<?php echo $row['id']; ?>"><button class="btn btn-primary"><i class="bi bi-pencil-square"></i></button></a>
                         <a href="delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Yakin ingin menghapus?')"><button class="btn btn-danger"><i class="bi bi-trash"></i></button></a>
                     </td>
                 </tr>
