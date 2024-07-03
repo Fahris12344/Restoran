@@ -49,7 +49,12 @@ include 'navbar.php';
 </div>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
-    AOS.init();
+    AOS.init({
+        duration: 1000, 
+        offset: 100, 
+        easing: 'ease-in-out', 
+        once: true 
+    });
 </script>
 <?php
 include 'footer.php';
