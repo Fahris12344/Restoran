@@ -1,7 +1,7 @@
 <?php
-include '../koneksi.php'; // Menghubungkan ke file koneksi database
-include '../layout/navbar.php'; // Menghubungkan ke file layout navbar
-require '../layout/footer.php'; // Menghubungkan ke file layout footer
+include '../koneksi.php';
+include '../layout/navbar.php';
+require '../layout/footer.php';
 
 // Query SQL untuk mengambil data dari tabel 'menu' dan 'koki'
 $result = mysqli_query($conn, "SELECT menu.*, koki.nama AS koki_name FROM 

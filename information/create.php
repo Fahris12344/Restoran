@@ -17,13 +17,14 @@ if (isset($_POST['submit_menu'])) {
     } else {
         // Handle file upload
         $target_dir = "upload/";
-        $foto_koki = basename($_FILES["target_koki"]["name"]);
+        $foto_koki = uniqid() . '_' . basename($_FILES["target_koki"]["name"]);
         $target_file = $target_dir . $foto_koki;
 
         // Move uploaded file to target directory
         if (move_uploaded_file($_FILES["target_koki"]["tmp_name"], $target_file)) {
             // Prepare SQL to insert data into 'menu' table
-            $sql = "INSERT INTO menu (makanan, target_koki, koki_id) VALUES ('$makanan', '$target_file', '$koki_id')";
+            $sql = "INSERT INTO menu (makanan, target_koki, koki_id)
+             VALUES ('$makanan', '$target_file', '$koki_id')";
 
             // Execute the query and check for success
             if ($conn->query($sql) === TRUE) {
@@ -60,11 +61,13 @@ $conn->close(); // Tutup koneksi database
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Tambah</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
+
 <body>
     <style>
         body {
@@ -81,7 +84,7 @@ $conn->close(); // Tutup koneksi database
             <div class="mb-3">
                 <label for="koki_id" class="form-label">Koki</label>
                 <select class="form-control" id="koki_id" name="koki_id" required>
-                    <?php while ($row = mysqli_fetch_assoc($koki)): ?>
+                    <?php while ($row = mysqli_fetch_assoc($koki)) : ?>
                         <option value="<?= $row['id'] ?>"><?= $row['nama'] ?></option>
                     <?php endwhile; ?>
                 </select>
@@ -95,4 +98,5 @@ $conn->close(); // Tutup koneksi database
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
+
 </html>

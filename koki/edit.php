@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="mb-3">
                 <input type="hidden" name="id" value="<?= $data['id'] ?>">
                 <div class="mb-3">
-                    <label for="nama" class="form-label">lokasi</label>
+                    <label for="nama" class="form-label">Koki</label>
                     <input type="text" class="form-control" name="nama" value="<?= $data['nama'] ?>">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
