@@ -12,7 +12,7 @@ if (isset($_GET['id'])) {
     unlink($foto_lama);
     $query = mysqli_query($conn,"DELETE FROM menu WHERE id = '$id'");
 
-    echo '<script>alert("Berhasil Hapus Foto") </script>';
+    echo '<script>alert("Berhasil Hapus Data") </script>';
     echo '<script>window.location.href="index.php"</script>';
 
 
